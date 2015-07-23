@@ -4,7 +4,14 @@ class PagesController < ApplicationController
   require 'open-uri'
 
   def index
-    @doc = Nokogiri::HTML(open("http://www.nytimes.com/"))
+
+    @which_page = @which_page || ""
+
+    #which_url = "http://"+params[:site]
+
+    @which_url = params[:site] || "http://www.nytimes.com/"
+
+    @doc = Nokogiri::HTML(open(@which_url))
   
     @body = @doc.css('body')
 

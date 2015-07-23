@@ -1,23 +1,23 @@
-<h1>Pages#index</h1>
+<h1>HTML fetcher</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
 
-<h2> Hello World </h2>
+Enter URL to fetch -- please enter a full URL starting with "http://..."
 
-Enter URL to fetch:
-<%= text_field "url", "name", "size" => 40 %>
-<%= url_field(:page, :site) %>
-<%= submit_tag("Fetch") %>
-<input id="user_homepage" name="user[homepage]" type="url" />
+	<%= form_for @which_page, url: "/pages", method: "get" do |f| %>
+
+    <%= f.url_field :site %>
+    <%= f.submit "fetch site" %>
+    <% end %>
+<br>
 
 <br>Tags:<br>
 <%= @tag_frequency_hash %>
 
-<br>END OF tags
-
-<h3> Number of divs: <%= @div_number %></h3>
-<h3> List of divs: <%= @div_list %> </h3>
-
-This is the source text of cnet.com
 <br>
 
-<%= @doc %>
+Here is the source HTML of <b><%= @which_url %></b>
+<br>
+
+<%= @body %>
+
+
