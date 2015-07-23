@@ -1,23 +1,48 @@
 <h1>HTML fetcher</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
 
-Enter URL to fetch -- please enter a full URL starting with "http://..."
+<div>
+	Enter URL to fetch -- please enter a full URL, in the form of http://www.nytimes.com
 
 	<%= form_for @which_page, url: "/pages", method: "get" do |f| %>
-
-    <%= f.url_field :site %>
+    <%= f.url_field :site, size: 60 %>
     <%= f.submit "fetch site" %>
-    <% end %>
-<br>
+  <% end %>
 
-<br>Tags:<br>
-<%= @tag_frequency_hash %>
+	<br>
+</div>
 
-<br>
+<div>
+	<br>
+	Highlight tag:
+	<%=@highlight_tag%>
+	<b>Sorted tags:</b>
 
-Here is the source HTML of <b><%= @which_url %></b>
-<br>
+	<h2> Tag hash </h2>
+	<%= @tag_frequency_sorted %>
 
-<%= @body %>
+	<% @tag_frequency_sorted.each do |tag| %>
+	<li>
+	<a href="<% @highlight_tag = tag[0]%>"><%= tag[0] %></a> <%= tag[1]%>
+	</li>
+	<% end %>
+
+	<br><br>
+</div>
+
+<div>
+	Here is the source HTML of <b><%= @which_url %></b>
+
+	<h1>Raw source with <b><%= @highlight_tag %></b> highlighted</h1>
+	<%= highlight(h(@body_text), @highlight_tag) %>
+	<br><br>
+
+	<h1>Highlight all foxes</h1>
+
+	<%= highlight(h(@test_text), "fox") %> 
+	<br>Test2:
+	<%= highlight(h(@test_text2), "world") %>
+	<!-- Need to RAW or SANTITIZXE the HTML in the text so it displays as text -->
+	<br>
+</div>
 
 
