@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   
   get '/pages', to: 'pages#index'
 
+  get '/pages/show', to: 'pages#show'
+
+  get 'pages/:tag', to: 'pages#change_tag'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,48 +1,11 @@
-<h1>HTML fetcher</h1>
-
 <div>
-	Enter URL to fetch -- please enter a full URL, in the form of http://www.nytimes.com
+	<h2>Enter URL to fetch</h2>
+	<p>Please enter a full URL, in the form of http://www.nytimes.com</p>
 
-	<%= form_for @which_page, url: "/pages", method: "get" do |f| %>
-    <%= f.url_field :site, size: 60 %>
+	<%= form_for :page, url: "/pages/show", method: "get" do |f| %>
+   	<%= f.url_field :fetch_url, size: 60 %>
     <%= f.submit "fetch site" %>
   <% end %>
 
 	<br>
 </div>
-
-<div>
-	<br>
-	Highlight tag:
-	<%=@highlight_tag%>
-	<b>Sorted tags:</b>
-
-	<h2> Tag hash </h2>
-	<%= @tag_frequency_sorted %>
-
-	<% @tag_frequency_sorted.each do |tag| %>
-	<li>
-	<a href="<% @highlight_tag = tag[0]%>"><%= tag[0] %></a> <%= tag[1]%>
-	</li>
-	<% end %>
-
-	<br><br>
-</div>
-
-<div>
-	Here is the source HTML of <b><%= @which_url %></b>
-
-	<h1>Raw source with <b><%= @highlight_tag %></b> highlighted</h1>
-	<%= highlight(h(@body_text), @highlight_tag) %>
-	<br><br>
-
-	<h1>Highlight all foxes</h1>
-
-	<%= highlight(h(@test_text), "fox") %> 
-	<br>Test2:
-	<%= highlight(h(@test_text2), "world") %>
-	<!-- Need to RAW or SANTITIZXE the HTML in the text so it displays as text -->
-	<br>
-</div>
-
-
