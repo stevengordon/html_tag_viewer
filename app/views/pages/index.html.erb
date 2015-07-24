@@ -1,11 +1,15 @@
 <div>
 	<h2>Enter URL to fetch</h2>
-	<p>Please enter a full URL, in the form of http://www.nytimes.com</p>
 
 	<%= form_for :page, url: "/pages/show", method: "get" do |f| %>
    	<%= f.url_field :fetch_url, size: 60 %>
     <%= f.submit "fetch site" %>
   <% end %>
+	<p>Please use full URL format, such as this: <i>http://www.sfgate.com</i></p>
+
+	<% if @error != "" %>
+		<b><%= @error %></b>
+	<% end %>
 
 	<br>
 </div>
