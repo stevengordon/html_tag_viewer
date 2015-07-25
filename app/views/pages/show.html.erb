@@ -1,18 +1,23 @@
-<div>
+<div class="container">
 	<p><%= link_to "Fetch a different site", root_path %></p>
 
 	<h2> Tags and their frequencies in <%= @which_url %></h2>
 
 	<ul>
 		<% @tag_frequency_sorted.each do |tag| %>
-			<li>
-				<a href="/pages/<%=tag[0]%>"><%= tag[0] %></a> <%= tag[1]%>
+			<li class="row">
+				<div class="col-md-4">
+					<a href="/pages/<%=tag[0]%>"> <%= tag[0] %> </a>
+				</div>
+				<div class="col-md-2">
+					 <%= tag[1]%>	
+				</div>
 			</li>
 		<% end %>
 	</ul>
 </div>
 
-<div>
+<div class="container">
 	<h2>HTML source of <%= @which_url %> with <mark><%= @highlight_tag %></mark> highlighted</h2>
 
 	<%= highlight(h(@body_text), @highlight_tag) %>
