@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 	# Use Nokogiri for website HTML loading
-  # require 'Nokogiri'
-  require 'open-uri'
+  # require 'nokogiri'
+  # require 'open-uri'
 
   def index
     # This method displays the form on which user can enter the URL to fetch
