@@ -85,7 +85,7 @@ class PagesController < ApplicationController
     end
 
     # Sort tag hash to show most frequently used tags at top of list
-    @@tag_frequency_sorted = tag_frequency.sort_by {|tag, frequency| frequency}.reverse.to_hash
+    @@tag_frequency_sorted = tag_frequency.sort_by {|tag, frequency| frequency}.reverse #.to_hash
   end
 
 end
