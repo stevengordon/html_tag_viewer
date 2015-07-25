@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 	# Use Nokogiri for website HTML loading
-  require 'Nokogiri'
+  # require 'Nokogiri'
   require 'open-uri'
 
   def index
